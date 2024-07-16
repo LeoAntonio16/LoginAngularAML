@@ -1,0 +1,38 @@
+<div class="login-container">
+  <form (ngSubmit)="onSubmit()" class="login-form">
+    <h2>Iniciar Sesión</h2>
+    <mat-form-field appearance="outline" class="form-group">
+      <mat-label>Correo Electrónico</mat-label>
+      <input matInput placeholder="correo@example.com" [formControl]="email" (blur)="updateErrorMessage()">
+      <mat-error *ngIf="email.invalid">{{ errorMessage() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-group">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" placeholder="********" [formControl]="password" (blur)="updateErrorMessagePassword()">
+      <mat-error *ngIf="password.invalid">{{ errorMessagePassword() }}</mat-error>
+    </mat-form-field>
+
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="rememberMe">
+      <label class="form-check-label" for="rememberMe">Recuérdame</label>
+    </div>
+    <button type="submit" class="btn login-button" [disabled]="email.invalid || password.invalid">Iniciar Sesión</button>
+    <p class="text-center mt-3">
+      <a href="#">¿Olvidaste tu contraseña?</a>
+    </p>
+    <p class="text-center">¿No tienes una cuenta? <a href="#">Regístrate</a></p>
+    <p class="text-center">o conéctate con</p>
+    <div class="d-flex justify-content-center">
+      <button type="button" class="btn btn-outline-primary mx-1">
+        <i class="fab fa-facebook-f"></i>
+      </button>
+      <button type="button" class="btn btn-outline-danger mx-1">
+        <i class="fab fa-google"></i>
+      </button>
+      <button type="button" class="btn btn-outline-dark mx-1">
+        <i class="fab fa-github"></i>
+      </button>
+    </div>
+  </form>
+</div>
